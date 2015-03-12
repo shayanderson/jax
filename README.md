@@ -66,7 +66,8 @@ $jax_client = new Client('example.php');
 	<head>
 		<title>Jax Demo</title>
 		<!-- jquery required -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+			</script>
 		<!-- print jax client function for making calls to server -->
 		<?=$jax_client->script?>
 	</head>
@@ -85,7 +86,7 @@ This simple example uses a Jax client function to send user names using ajax to 
 
 
 #### Setting up a Jax Server
-Setting up a Jax server that is capable of listening for ajax client requests is simple. For example, create a file `ajax-server.php` in your project directory, then add the following code
+Setting up a Jax server that is capable of listening for ajax client requests is simple. For example, create a file `/ajax-server.php` in your project directory, then add the following code
 ```php
 use Jax\Server;
 
@@ -158,7 +159,8 @@ Server::get('updateUser', function($id, $new_name) {
 	}
 	else // update failed
 	{
-		Server::template('status', ['id' => 'div_status', 'status' => 'Failed to update user']);
+		Server::template('status', ['id' => 'div_status',
+			'status' => 'Failed to update user']);
 	}
 });
 ```
@@ -213,7 +215,8 @@ $client = new Client('/ajax-server.php');
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+			</script>
 		<?=$client->script?>
 		<script>
 			function addUserFunc(data, div)
@@ -238,13 +241,19 @@ This example is very simple. The JavaScript function `addUserFunc()` is called w
 
 > The <?=$client->script?> could easily be replaced with a client-side JS file, as long as the Jax server location doesn't change, for example the file `/skin/js/jax.js` could be include and hold the code:
 ```javascript
-function jax(){$.ajax({url:'/sandbox/jax/index.php',type:'GET',data:{data:arguments},async:false,success:function(r) {if(typeof(r) === 'string') {try{eval(r);}catch(e){}}else{}}});}function jaxGet(){var ar;$.ajax({url:'/sandbox/jax/index.php',type:'GET',data:{data:arguments},dataType:'json',async:false,success:function(r){ar=r;}});return ar;}
+function jax(){$.ajax({url:'/ajax-server.php',
+type:'GET',data:{data:arguments},async:false,success:function(r)
+{if(typeof(r) === 'string') {try{eval(r);}catch(e){}}else{}}});}
+function jaxGet(){var ar;$.ajax({url:'/ajax-server.php',type:'GET',
+data:{data:arguments},dataType:'json',async:false,
+success:function(r){ar=r;}});return ar;}
 ```
 
 Next, a simple page `/get-user.php` could be created with the same kind of logic for querying the Jax server for user data.
 > Other options can be used when setting the `\Jax\Client` object, for example the constructor uses the params:
 ```php
-new Client($server_url, $request_type = self::REQUEST_TYPE_GET, $async = false, $debug = false, $script_tags = true, $func_name = 'jax', $func_name_get = 'jaxGet')
+new Client($server_url, $request_type = self::REQUEST_TYPE_GET, $async = false,
+	$debug = false, $script_tags = true, $func_name = 'jax', $func_name_get = 'jaxGet')
 ```
 Any of these options can be changed to as required by the client functions `jax()` or `jaxGet()` (and even those function names can be changed using the `$func_name` and `$func_name_get` params).
 When debugging is set to `true` the `console.log()` method is used in the `jax()` and `jaxGet()` functions for helpful debugging messages, like when the requested action has executed correctly.
@@ -255,11 +264,12 @@ Manual client requests can be used with a Jax server *without* having to use the
 ```javascript
 function getUser()
 {
-	$.get('/ajax-server.php', {data:{action:'getUser', id:$('#uid').val()}}, function(response){
-		console.log(response);
-		try { eval(response); }
-		catch(e) { alert(e); }
-	});
+	$.get('/ajax-server.php', {data:{action:'getUser', id:$('#uid').val()}},
+		function(response){
+			console.log(response);
+			try { eval(response); }
+			catch(e) { alert(e); }
+		});
 }
 ```
 This is a simple request that will `eval()` the server response. If this was a post request the `$.get` function name can be replaced with `$.post`
