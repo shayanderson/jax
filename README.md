@@ -307,11 +307,12 @@ Next, setup the ajax call to the Jax server:
 ```javascript
 <script>
 $('form').submit(function(event){
-	var fdata ={
+	var fdata = {
 		action:'postForm',
 		uname: $('#uname').val(),
 		uage: $('#uage').val()
-	}
+	};
+
 	$.ajax({
 		type:'POST',
 		url:'/ajax-server.php',
@@ -323,6 +324,7 @@ $('form').submit(function(event){
 			catch(e) { alert(e); }
 		}
 	});
+	
 	event.preventDefault();
 });
 </script>
