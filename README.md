@@ -28,14 +28,15 @@ Server::get('addUser', function($user_name) {
 	// check if name exists in request
 	if(!$user_name)
 	{
-		Server::error('Invalid user name'); // invalid user name
+		// invalid user name (uses template 'error' above)
+		Server::error('Invalid user name');
 	}
 
 	// save user in database (some database logic would go here)
 
 	// set success response
-	Server::response()->jQuery('#response')->append('User \'' . $user_name
-		. '\' has been added<br />');
+	Server::response()->jQuery('#response')->append('User ' . $user_name
+		. ' has been added<br />');
 
 	// and turn the response message red
 	Server::response()->jQuery('#response')->css('color', '#f00');
@@ -58,7 +59,7 @@ $jax_client = new Client('example.php');
 	</head>
 	<body>
 		<label>Name:</label>
-		<input type="text" value="Shay Anderson" id="uname" />
+		<input type="text" id="uname" />
 		<!-- add onclick event for adding user -->
 		<button onclick="jax('addUser', $('#uname').val());">Add User</button>
 
