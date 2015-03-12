@@ -182,7 +182,7 @@ Or using the JavaScript `console.log(x)` method like:
 ```php
 Server::response()->console->log('Log something');
 ```
-However, the methods `__getData__()` and `__setData__()` cannot be used as they are already defined in the `\Jax\Server\Response` class.y are already defined in the `\Jax\Server\Response` class.
+However, the methods `__getData__()` and `__setData__()` cannot be used as they are already defined in the `\Jax\Server\Response` class.
 
 
 #### Using Jax Client
