@@ -232,7 +232,8 @@ $client = new Client('/ajax-server.php');
 	<body>
 		<label>Name:</label>
 		<input type="text" id="uname" />
-		<button onclick="addUserFunc(jaxGet('addUser', $('#uname').val()));">Add User</button>
+		<button onclick="addUserFunc(jaxGet('addUser', $('#uname').val()));">
+			Add User</button>
 		<div id="response"></div>
 	</body>
 </html>
@@ -240,7 +241,7 @@ $client = new Client('/ajax-server.php');
 This example is very simple. The JavaScript function `addUserFunc()` is called when the button is clicked. The Jax function `jaxGet()` is used to query the Jax server. The `jaxGet()` function is loaded because of the `<?=$client->script?>` code - this imports the core JS `jax()` (used when `eval()` is used on response string data) and `jaxGet()` (used when getting back JSON data).
 
 > The <?=$client->script?> could easily be replaced with a client-side JS file, as long as the Jax server location doesn't change, for example the file `/skin/js/jax.js` could be include and hold the code:
-```javascript
+```
 function jax(){$.ajax({url:'/ajax-server.php',
 type:'GET',data:{data:arguments},async:false,success:function(r)
 {if(typeof(r) === 'string') {try{eval(r);}catch(e){}}else{}}});}
@@ -311,6 +312,7 @@ Posting form data can also be accomplished. Here is an example HTML form:
 <form id="user_form">
 	<label>Name:</label>
 	<input type="text" id="uname" />
+	<label>Age:</label>
 	<input type="text" id="uage" />
 	<button type="submit">Add User</button>
 </form>
