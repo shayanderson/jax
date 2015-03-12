@@ -6,23 +6,8 @@ Jax is a library that make Ajax easy.
 Here is a quick example of how Jax works using a *server* and *client*
 ```php
 <?php
-/**
- * Jax - Ajax Library for PHP 5.5.0+
- *
- * @package Jax
- * @version 0.0.1
- * @copyright 2015 Shay Anderson <http://www.shayanderson.com>
- * @license MIT License <http://www.opensource.org/licenses/mit-license.php>
- * @link <https://github.com/shayanderson/jax>
- */
 use Jax\Server;
 use Jax\Client;
-
-/**
- * Jax Example: Server and Client
- *
- * @author Shay Anderson 03.15 <http://www.shayanderson.com/contact>
- */
 
 // include autoload for autoloading classes
 require_once './lib/Jax/autoload.php';
