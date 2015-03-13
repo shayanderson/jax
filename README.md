@@ -163,8 +163,10 @@ Server::get('getUser', function($user_name) {
 });
 ```
 This type of response would be sent to `eval()` when used with the `jax()` JavaScript function. There are two types of responses:
+
 1. JavaScript code returned as `string` and processed with `eval()`
 2. JSON data
+
 The example above illustrates the first type of response. The second type of response, JSON data, can be acheived using the `Server::response(array $data)` method, for example the abover code could be change to return JSON:
 ```php
     // responsd with user data
