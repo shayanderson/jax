@@ -1,6 +1,6 @@
 # Jax
 #### Ajax Library for PHP 5.5.0+
-Jax is a library that make Ajax easy.
+Jax is a library that makes Ajax easy.
 
 #### Example
 Here is a quick example of how Jax works using a *server* and *client*
