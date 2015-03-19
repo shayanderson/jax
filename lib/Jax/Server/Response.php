@@ -131,7 +131,8 @@ class Response
 	 */
 	final public static function script($script)
 	{
-		self::$__data[self::$__response_id__][] = $script;
+		// rm ';', script is auto closed
+		self::$__data[self::$__response_id__][] = rtrim($script, ';');
 		self::$__response_id__++;
 	}
 }
