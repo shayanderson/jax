@@ -189,7 +189,7 @@ Or script can be passed as a string using the `script()` method:
 // Jax will auto close the statement with ';'
 Server::response()->script('alert("test")');
 ```
-However, the methods `__getData__()`, `__setData__()` and `script()` cannot be used as they are already defined in the `\Jax\Server\Response` class.
+However, the methods `__getData__()` and `__setData__()` cannot be used as they are already defined in the `\Jax\Server\Response` class.
 
 
 #### Using Jax Client
