@@ -76,7 +76,7 @@ class Response
 	 * @param boolean $format_data
 	 * @return mixed (array when not formatting, else string)
 	 */
-	public static function __getData__($format_data = false)
+	final public static function __getData__($format_data = false)
 	{
 		if(self::$__data_response !== null) // data only response
 		{
@@ -118,8 +118,20 @@ class Response
 	 * @param array $data
 	 * @return void
 	 */
-	public static function __setData__(array $data)
+	final public static function __setData__(array $data)
 	{
 		self::$__data_response = $data;
+	}
+
+	/**
+	 * Script string setter
+	 *
+	 * @param string $script (ex: 'alert("test")')
+	 * @return void
+	 */
+	final public static function script($script)
+	{
+		self::$__data[self::$__response_id__][] = $script;
+		self::$__response_id__++;
 	}
 }

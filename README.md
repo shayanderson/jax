@@ -184,7 +184,12 @@ Or using the JavaScript `console.log(x)` method like:
 ```php
 Server::response()->console->log('Log something');
 ```
-However, the methods `__getData__()` and `__setData__()` cannot be used as they are already defined in the `\Jax\Server\Response` class.
+Or script can be passed as a string using the `script()` method:
+```php
+// Jax will auto close the statement with ';'
+Server::response()->script('alert("test")');
+```
+However, the methods `__getData__()`, `__setData__()` and `script()` cannot be used as they are already defined in the `\Jax\Server\Response` class.
 
 
 #### Using Jax Client
@@ -326,7 +331,7 @@ $('form').submit(function(event){
 			catch(e) { alert(e); }
 		}
 	});
-	
+
 	event.preventDefault();
 });
 </script>
